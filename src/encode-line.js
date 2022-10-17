@@ -8,11 +8,27 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  * @example
  * For aabbbc should return 2a3bc
+ * baabbbcaa b2a3bc2a
  *
  */
-function encodeLine(/* str */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function encodeLine(str) {
+
+  let result = '';
+  let count = 1;
+
+  for (i = 0; i < str.length; i++) {
+
+    if (str[i] === str[i + 1]) {
+      count++
+    } else {
+      result = result + count + str[i];
+      count = 1;
+    }
+
+  }
+
+  return result.replace(/[1]/g, '')
+
 }
 
 module.exports = {
