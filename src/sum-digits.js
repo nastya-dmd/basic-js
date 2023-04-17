@@ -14,22 +14,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getSumOfDigits(n) {
   
-  const arr = ('' + n).split('')
+  const arr = String(n).split('');
   let number = arr.map(Number);
-  var sum = 0;
- 
-  for (var i = 0; i < number.length; i++) {
-    sum += number[i];
+  let sum = 0
 
-  }
+  number.forEach(el => {
+    sum += el
+  })
+
   if (sum > 9) {
-    let x = [...sum + ''].map(Number);
-
-    return x.reduce((a, b) => a + b)
-
+    return getSumOfDigits(sum)
   }
-  return sum
 
+  return sum
 }
 
 module.exports = {
